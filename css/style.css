@@ -1,0 +1,157 @@
+html,body,p,ul,li,ol{
+	margin: 0;
+	padding: 0;
+}
+html,body{
+	height: 100%;
+	box-sizing: border-box;
+}
+ul,li,ol{
+	list-style: none;
+}
+.container {
+	height:100%;
+	width:80%;
+	margin: 0 auto;
+	padding: 10px 0;
+	box-sizing: border-box;
+}
+.header-top {
+	height:30px;
+}
+.chat-main {
+	height: calc(100% - 30px);
+	background:#f1f1f1;
+	display: -webkit-flex;
+	display: flex;
+}
+.chat-content {
+	-webkit-flex: 1;
+	flex: 1;
+	display: -webkit-flex;
+	display: flex;
+	flex-flow: column;
+}
+.users-panle {
+	padding:8px;
+	box-sizing: border-box;
+	-webkit-flex: 1;
+	flex: 1;
+}
+.users-Info {
+	height:200px;
+}
+.chat-userlist {
+	width: 300px;
+	border-left:1px solid aqua;
+}
+.userlist-title {
+	height:30px;
+	line-height: 30px;
+	text-indent: 1.25rem;
+	color:#ffffff;
+	background-color:#00FFFF;
+}
+.u-counts {
+	color:#ff0000;
+}
+.u-list p {
+	height:28px;
+	line-height: 1.75rem;
+	text-indent: 1.875rem;
+	border-bottom: 1px solid #cccccc;
+}
+.text-panle-left, .text-panle-right {
+	overflow: hidden;
+	font-size:12px;
+	text-align: left;
+}
+.head {
+	width:30px;
+	height:100%;
+}
+.head img {
+	width:30px;
+	height:30px;
+	background-size:100%;
+}
+.info {
+	box-sizing: border-box;
+}
+.info-time {
+	height:20px;
+	line-height: 1.25rem;
+	width:140px;
+	text-align: center;
+	border-radius: 0.1875rem;
+	background-color:#c1c1c1;
+	margin-bottom:10px;
+	
+}
+.text-info {
+	display: inline-block;
+}
+.text-panle-left .head, .text-panle-left .info{
+	float: left;
+	text-align: left;
+}
+.text-panle-left .info {
+	padding-left: 0.625rem;
+}
+.text-panle-right .head, .text-panle-right .info{
+	float: right;
+	text-align: right;
+}
+.text-panle-right .info {
+	padding-right: 0.625rem;
+}
+
+.tool-panel {
+	height:30px;
+}
+.value-panel {
+	height:140px;
+	width:100%;
+	padding:10px;
+	box-sizing: border-box;
+}
+#textVal {
+	width: 100%;
+	border:none;
+	outline: none;
+	resize: none;
+	height:100%;
+}
+.send-panel {
+	height:30px;
+	text-align: right;
+}
+.send {
+	display: inline-block;
+	font-size: 14px;
+	width:80px;
+	height:30px;
+	line-height: 1.875rem;
+	background-color:#00FFFF;
+	text-align: center;
+	color:#ffffff;
+	cursor: pointer;
+	transition: background-color .5s;
+	-moz-transition: background-color .5s; /* Firefox 4 */
+	-webkit-transition: background-color .5s; /* Safari 和 Chrome */
+	-o-transition: background-color .5s; /* Opera */
+}
+.send:hover {
+	background-color:#00ff00;
+}
+.into-box {
+	text-align: center;
+	font-size: 0.75rem;
+	height:20px;
+	margin:5px 0;
+}
+.into-text {
+	background-color: #c1c1c1;
+	color: #f1f1f1;
+	padding:3px 5px;
+}
