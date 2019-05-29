@@ -1,5 +1,6 @@
+var db = require('../db/db')
 var ws = require('nodejs-websocket')
-
+db.find('site', {code:'aaaa'})
 var server = ws.createServer(function(conn){
 	conn.on('text', function(data){
 		var result = JSON.parse(data)
@@ -16,15 +17,36 @@ var server = ws.createServer(function(conn){
 				}))
 				break;
 			case 'chat':
-				
+				boardcast(JSON.stringify({
+					type:'serverMessage',
+					name:conn.nickname,
+					message:result.message
+				}))
 				break;
 			default:
 				break;
 		}
-		// getAllChatter()
+	})
+	
+	conn.on('close', function(){
+		boardcast(JSON.stringify({
+			type:'serverUserInfo',
+			msg:conn.nickname + ' 离开房间'
+		}))
+		boardcast(JSON.stringify({
+			type:'userList',
+			msg:getAllChatter()
+		}))
+	})
+	
+	conn.on('error', function(err){
+		console.log('异常关闭')
 	})
 }).listen(12233)
-
+/**
+ * 向所有用户广播
+ * @param {Object} msg :广播信息
+ */
 function boardcast(msg){
 	server.connections.forEach(function(conn){
 		conn.sendText(msg)

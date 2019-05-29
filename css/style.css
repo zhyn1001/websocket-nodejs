@@ -25,6 +25,11 @@ ul,li,ol{
 	display: -webkit-flex;
 	display: flex;
 }
+.user-nav {
+	width:200px;
+	border-right:1px solid #00FFFF;
+	box-sizing: border-box;
+}
 .chat-content {
 	-webkit-flex: 1;
 	flex: 1;
@@ -37,6 +42,9 @@ ul,li,ol{
 	box-sizing: border-box;
 	-webkit-flex: 1;
 	flex: 1;
+	overflow-x: hidden;
+	overflow-y: auto;
+	background:#c1c1c1;
 }
 .users-Info {
 	height:200px;
@@ -81,12 +89,16 @@ ul,li,ol{
 .info-time {
 	height:20px;
 	line-height: 1.25rem;
-	width:140px;
-	text-align: center;
 	border-radius: 0.1875rem;
 	background-color:#c1c1c1;
 	margin-bottom:10px;
 	
+}
+.text-panle-left .info-time {
+	text-align: left;
+}
+.text-panle-right .info-time {
+	text-align: right;
 }
 .text-info {
 	display: inline-block;
