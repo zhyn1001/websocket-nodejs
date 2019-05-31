@@ -1,6 +1,13 @@
 var db = require('../db/db')
 var ws = require('nodejs-websocket')
-db.find('site', {code:'aaaa'})
+new Promise(function(resolve, reject){	
+	resolve()
+}).then(function(res){
+	db.dele('site', {code:'wwww'}, 0)
+	// db.insert('site', {code:'kill',name:'牛奶'})
+}).then(function(res){
+	db.find('site',{})
+})
 var server = ws.createServer(function(conn){
 	conn.on('text', function(data){
 		var result = JSON.parse(data)

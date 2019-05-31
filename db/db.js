@@ -10,7 +10,8 @@ module.exports = {
 			callback(db)
 		})
 	},
-	find: function(collection, fStr){
+	//查询
+	find: function(collection, fStr={}, callback){
 		this.connDB(function(db){
 			var dbo = db.db(dbName)
 			dbo.collection(collection).find(fStr).toArray(function(err, res){
@@ -20,7 +21,8 @@ module.exports = {
 			})
 		})
 	},
-	update: function(collection, tj, newValue, isMulti){
+	//更新
+	update: function(collection, tj, newValue, isMulti=false, callback){
 		this.connDB(function(db){
 			var dbo = db.db(dbName)
 			dbo.collection(collection).updateOne(tj, newValue, function(err, res){
@@ -28,6 +30,47 @@ module.exports = {
 				console.log('更新文档成功')
 				db.close()
 			},{isMulti:isMulti})
+		})
+	},
+	//删除
+	/**
+	 * @param {Object} collection:数据库集合
+	 * @param {Object} fStr:查询条件
+	 * @param {Object} isMany:是否删除多条；1：是，0：否
+	 * @param {Object} callback：回调函数
+	 */
+	dele:function(collection, fStr, isOne, callback){
+		this.connDB(function(db){
+			var dbo = db.db(dbName)
+			
+			if(isOne) {
+				dbo.collection(collection).deleteMany(fStr, function(err, res){
+					if(err) throw err
+					console.log('删除成功')
+					db.close()
+				})
+			}else{
+				dbo.collection(collection).deleteOne(fStr, function(err, res){
+					if(err) throw err
+					console.log('删除成功')
+					db.close()
+				})
+			}
+		})
+	},
+	/**
+	 * @param {Object} collection:集合
+	 * @param {Object} document:插入文档
+	 * @param {Object} callback:回调函数
+	 */
+	insert:function(collection, document, callback){
+		this.connDB(function(db){
+			var dbo = db.db(dbName)
+			dbo.collection(collection).insertOne(document, function(err, res){
+				if(err) throw err
+				console.log('插入成功')
+				db.close()
+			})
 		})
 	}
 }
